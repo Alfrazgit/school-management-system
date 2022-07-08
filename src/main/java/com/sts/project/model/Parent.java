@@ -1,8 +1,8 @@
 package com.sts.project.model;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="students")
-public class Student {
+@Table(name = "parents")
+public class Parent {
 
 	@Id
-	private int student_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String name;
-	private int student_class;
-	private String section;
-	private int roll;
-	private Date dob;
-	private int parent_id;
+	private String password;
+	private String phno;
+	private int stu_id;
+
 }

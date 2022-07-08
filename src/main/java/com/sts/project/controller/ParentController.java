@@ -14,42 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sts.project.model.Student;
-import com.sts.project.repository.StudentRepository;
+import com.sts.project.model.Parent;
+import com.sts.project.repository.ParentRepository;
 
 @RestController
 @RequestMapping("school")
 @CrossOrigin(origins = "http://localhost:3000/")
-public class StudentController {
+public class ParentController {
 
 	@Autowired
-	private StudentRepository studentRepository;
+	private ParentRepository parentRepository;
 
-	@GetMapping("studentall")
-	public List<Student> getStudents() {
-		return (List<Student>) studentRepository.findAll();
+	@GetMapping("parentall")
+	public List<Parent> getParents() {
+		return (List<Parent>) parentRepository.findAll();
 	}
 	
-	@GetMapping("studentall/{id}")
-	public Optional<Student> getStudentById(@PathVariable int id) {
-		return studentRepository.findById(id);
+	@GetMapping("parentall/{id}")
+	public Optional<Parent> getParentById(@PathVariable int id) {
+		return parentRepository.findById(id);
 	}
 
-	@PostMapping("studentall")
-	public Student addStudent(@RequestBody Student student) {
-		return studentRepository.save(student);
+	@PostMapping("parentall")
+	public Parent addParent(@RequestBody Parent parent) {
+		return parentRepository.save(parent);
 	}
 
-	@PutMapping("/studentall/{id}")
-	public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
-		return studentRepository.save(student);
-		
+	@PutMapping("/parentall/{id}")
+	public Parent updateParent(@PathVariable int id, @RequestBody Parent parent) {
+		return parentRepository.save(parent);
 	}
 
-	@DeleteMapping("/studentall/{id}")
-	public void deleteStudent(@PathVariable int id) {
-		studentRepository.deleteById(id);
+	@DeleteMapping("/parentall/{id}")
+	public void deleteParent(@PathVariable int id) {
+		parentRepository.deleteById(id);
 		System.out.println("deleted");
 	}
-
+	
 }

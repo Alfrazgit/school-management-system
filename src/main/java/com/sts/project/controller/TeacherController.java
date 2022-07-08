@@ -14,41 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sts.project.model.Student;
-import com.sts.project.repository.StudentRepository;
+import com.sts.project.model.Teacher;
+import com.sts.project.repository.TeacherRepository;
 
 @RestController
 @RequestMapping("school")
 @CrossOrigin(origins = "http://localhost:3000/")
-public class StudentController {
+public class TeacherController {
 
 	@Autowired
-	private StudentRepository studentRepository;
+	private TeacherRepository teacherRepository;
 
-	@GetMapping("studentall")
-	public List<Student> getStudents() {
-		return (List<Student>) studentRepository.findAll();
+	@GetMapping("teacherall")
+	public List<Teacher> getTeachers() {
+		return (List<Teacher>) teacherRepository.findAll();
 	}
 	
-	@GetMapping("studentall/{id}")
-	public Optional<Student> getStudentById(@PathVariable int id) {
-		return studentRepository.findById(id);
+	@GetMapping("teacherall/{id}")
+	public Optional<Teacher> getTeacherById(@PathVariable String id) {
+		return teacherRepository.findById(id);
 	}
 
-	@PostMapping("studentall")
-	public Student addStudent(@RequestBody Student student) {
-		return studentRepository.save(student);
+	@PostMapping("teacherall")
+	public Teacher addTeacher(@RequestBody Teacher teacher) {
+		return teacherRepository.save(teacher);
 	}
 
-	@PutMapping("/studentall/{id}")
-	public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
-		return studentRepository.save(student);
-		
+	@PutMapping("/teacherall/{id}")
+	public Teacher updateTeacher(@PathVariable String id, @RequestBody Teacher teacher) {
+		return teacherRepository.save(teacher);
 	}
 
-	@DeleteMapping("/studentall/{id}")
-	public void deleteStudent(@PathVariable int id) {
-		studentRepository.deleteById(id);
+	@DeleteMapping("/teacherall/{id}")
+	public void deleteTeacher(@PathVariable String id) {
+		teacherRepository.deleteById(id);
 		System.out.println("deleted");
 	}
 
