@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Parent {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 	private String name;
 	private String password;

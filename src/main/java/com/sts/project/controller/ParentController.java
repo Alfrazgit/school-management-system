@@ -46,9 +46,11 @@ public class ParentController {
 	}
 
 	@DeleteMapping("/parentall/{id}")
-	public void deleteParent(@PathVariable int id) {
+	public Optional<Parent> deleteParent(@PathVariable int id) {
+		Optional<Parent> parent = parentRepository.findById(id);
 		parentRepository.deleteById(id);
 		System.out.println("deleted");
+		return parent;
 	}
 	
 }
